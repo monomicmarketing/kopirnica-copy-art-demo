@@ -27,4 +27,10 @@ Google Maps dugme otvara pretragu po punom nazivu i adresi. Tačan Google Maps p
 
 ## Objavljivanje
 
-Repozitorij i Vercel projekat su namjenski za ovaj demo. Ako GitHub integracija ne poveže projekat, direktni Vercel deployment treba dokumentovati zasebno uz konkretan URL i commit.
+GitHub repozitorij: `monomicmarketing/kopirnica-copy-art-demo`. Vercel projekat: `kopirnica-copy-art-demo` u istom Vercel timu kao Bezistan i RASS.
+
+Pokušaj automatskog povezivanja GitHub repozitorija preko Vercel API-ja vraća `repo_no_access`: Vercel GitHub integracija nema pristup novom repozitoriju. Produkcijski demo je zato direktno objavljen kroz Vercel API slanjem izvornih datoteka iz ovog repozitorija. GitHub push sam po sebi trenutno **ne pokreće** novo objavljivanje. Za kasnije automatsko objavljivanje treba omogućiti Vercel GitHub aplikaciji pristup ovom repozitoriju i povezati ga u postavkama projekta.
+
+Javni URL: https://kopirnica-copy-art-demo.vercel.app/
+
+QA skripta `qa.cjs` koristi instalirani Microsoft Edge. Pokretanje objavljene stranice: `BASE_URL=https://kopirnica-copy-art-demo.vercel.app/ node qa.cjs` (u PowerShellu: `$env:BASE_URL='https://kopirnica-copy-art-demo.vercel.app/'; node qa.cjs`). Snimci se čuvaju u ignorisanom direktoriju `qa-shots/`.
