@@ -33,4 +33,6 @@ Pokušaj automatskog povezivanja GitHub repozitorija preko Vercel API-ja vraća 
 
 Javni URL: https://kopirnica-copy-art-demo.vercel.app/
 
-QA skripta `qa.cjs` koristi instalirani Microsoft Edge. Pokretanje objavljene stranice: `BASE_URL=https://kopirnica-copy-art-demo.vercel.app/ node qa.cjs` (u PowerShellu: `$env:BASE_URL='https://kopirnica-copy-art-demo.vercel.app/'; node qa.cjs`). Snimci se čuvaju u ignorisanom direktoriju `qa-shots/`.
+QA skripte `qa-final.cjs` i `qa-interactions.cjs` koriste instalirani Google Chrome. U PowerShellu: `$env:BASE_URL='https://kopirnica-copy-art-demo.vercel.app/'; $env:QA_LABEL='production-layout'; node qa-final.cjs; $env:QA_LABEL='production-interactions'; node qa-interactions.cjs`. Prva snima i mjeri širine 320–1920 px, druga provjerava animaciju, meni, kontakt, reduced-motion i vrlo uski prikaz. Snimci i izvještaji čuvaju se u ignorisanom direktoriju `qa-shots/`.
+
+Archivo Black i Outfit se poslužuju lokalno iz `public/fonts/`; licence su u istom direktoriju.
