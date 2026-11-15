@@ -26,7 +26,7 @@ const widths = process.env.QA_WIDTHS ? process.env.QA_WIDTHS.split(',').map(Numb
       const b=s=>document.querySelector(s)?.getBoundingClientRect().toJSON();
       const paper=document.querySelector('.poster-output');
       return {width:innerWidth,scrollWidth:document.documentElement.scrollWidth,
-        title:b('.hero h1'),buttons:b('.hero-buttons'),art:b('.hero-art'),printer:b('.printer-body'),slot:b('.printer-slot'),mask:b('.poster-mask'),paper:b('.poster-output'),posterText:b('.poster-ink strong'),posterClip:getComputedStyle(paper).clipPath,
+        title:b('.hero h1'),buttons:b('.hero-buttons'),art:b('.hero-art'),printer:b('.printer-body'),slot:b('.printer-slot'),mask:b('.poster-mask'),paper:b('.poster-output'),posterText:b('.poster-ink strong'),paperHeight:getComputedStyle(paper).height,inkClip:getComputedStyle(document.querySelector('.poster-ink')).clipPath,
         cardTitles:[...document.querySelectorAll('.paper-content h3')].map(e=>({text:e.innerText,box:e.getBoundingClientRect().toJSON()})),dock:b('.mobile-dock'),dockPosition:getComputedStyle(document.querySelector('.mobile-dock')).position,footer:b('.footer'),robots:document.querySelector('meta[name="robots"]')?.content};
     });
     data.http=response.status();data.errors=errors;report.push(data);
@@ -34,6 +34,6 @@ const widths = process.env.QA_WIDTHS ? process.env.QA_WIDTHS.split(',').map(Numb
     await page.close();
   }
   fs.writeFileSync(`${out}/report.json`,JSON.stringify(report,null,2));
-  console.log(JSON.stringify(report.map(x=>({width:x.width,http:x.http,overflow:x.scrollWidth-x.width,printerTop:x.printer.top,paperTop:x.paper.top,paperBottom:x.paper.bottom,slotBottom:x.slot.bottom,posterClip:x.posterClip,dockPosition:x.dockPosition,errors:x.errors})),null,2));
+  console.log(JSON.stringify(report.map(x=>({width:x.width,http:x.http,overflow:x.scrollWidth-x.width,printerTop:x.printer.top,paperTop:x.paper.top,paperBottom:x.paper.bottom,slotBottom:x.slot.bottom,paperHeight:x.paperHeight,inkClip:x.inkClip,dockPosition:x.dockPosition,errors:x.errors})),null,2));
   await browser.close();
 })().catch(e=>{console.error(e);process.exit(1)});
